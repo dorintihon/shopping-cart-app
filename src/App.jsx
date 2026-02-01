@@ -1,13 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home.jsx';
+import Shop from './pages/Shop.jsx';
+import Cart from './pages/Cart.jsx';
+import PageLayout from './components/PageLayout.jsx';
 
 function App() {
   
   return (
     <>
-      <h1>Shopping Cart</h1>
+      <Routes>
+        <Route element={<PageLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/cart" element={<Cart />} />
+        </Route>
+      </Routes>
     </>
   )
 }

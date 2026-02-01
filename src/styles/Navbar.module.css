@@ -1,0 +1,12 @@
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+}
+
+.link {
+    color: rgb(207, 6, 6);
+    margin-right: 1rem;
+    text-decoration: none;
+}
+/* End of shopping-cart-app/src/styles/Navbar.modules.css */
