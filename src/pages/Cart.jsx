@@ -1,4 +1,5 @@
 import { useCart } from '../context/CartContext.jsx';
+import styles from '../styles/Cart.module.css';
 
 function Cart() {
   const { cartItems, removeFromCart, reduceQuantity, addToCart } = useCart();
@@ -13,6 +14,7 @@ function Cart() {
         <ul>
           {cartItems.map((item, index) => (
             <li key={index}>
+              <img src={item.image} alt={item.name} className={styles.productImage} />
               {item.title} - ${item.price} x {item.quantity}
               <button onClick={() => removeFromCart(item.id)}>Remove</button>
               <button onClick={() => reduceQuantity(item.id)}>-</button>

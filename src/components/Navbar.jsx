@@ -9,7 +9,8 @@ function Navbar() {
         <nav className={styles.navbar}>
             <Link to="/" className={styles.link}>Home</Link>
             <Link to="/shop" className={styles.link}>Shop</Link>
-            <Link to="/cart" className={styles.link}>Cart ({getTotalItems()})</Link>
+            <Link to="/cart" className={styles.link}>Cart <span className={styles.amount}>{getTotalItems()}</span></Link>
+
         </nav>
     )
 }
