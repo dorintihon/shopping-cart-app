@@ -38,7 +38,7 @@ function Shop() {
   return (
     <>
       <h1 className={styles.title}>Shop</h1>
-      {loading ? <p>Loading products...</p> : (
+      {loading ? <p className={styles.loading}>Loading products...</p> : (
         <div>
           <div className={styles.Category}>
             <button onClick={() => setSelectedCategory('All')}>All</button>
