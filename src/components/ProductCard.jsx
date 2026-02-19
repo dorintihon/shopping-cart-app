@@ -13,14 +13,14 @@ function ProductCard({ product = {
     const [quantity, setQuantity] = useState(1);
   return (
     <div className={styles.productCard}>
-        <img src={product.image} alt={product.name} className={styles.productImage} />
-      <h2 className={styles.productName}>{product.name}</h2>
+        <img src={product.image} alt={product.title} className={styles.productImage} />
+      <h2 className={styles.productName}>{product.title}</h2>
       <p className={styles.productPrice}>${product.price}</p>
     
       <div className={styles.productActions}>
+        <button className={styles.addDecreaseButton} onClick={() => {if (quantity > 1) setQuantity(quantity - 1)}}>-</button>
         <input type="number" min="1" value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} className={styles.quantityInput} />
         <button className={styles.addDecreaseButton} onClick={() => setQuantity(quantity + 1)}>+</button>
-        <button className={styles.addDecreaseButton} onClick={() => {if (quantity > 1) setQuantity(quantity - 1)}}>-</button>
         <button className={styles.addToCartButton} onClick={() => addToCart(product, quantity)}>Add to Cart</button>
       </div>
     </div>
