@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
+import styles from '../styles/Shop.module.css'
 
 function Shop() {
 
@@ -36,18 +37,18 @@ function Shop() {
 
   return (
     <>
-      <h1>Shop</h1>
+      <h1 className={styles.title}>Shop</h1>
       {loading ? <p>Loading products...</p> : (
         <div>
-          <div className="Category">
+          <div className={styles.Category}>
             <button onClick={() => setSelectedCategory('All')}>All</button>
             <button onClick={() => setSelectedCategory('Electronics')}>Electronics</button>
             <button onClick={() => setSelectedCategory('Jewelery')}>Jewelery</button>
             <button onClick={() => setSelectedCategory("Men's Clothing")}>Men's Clothing</button>
             <button onClick={() => setSelectedCategory("Women's Clothing")}>Women's Clothing</button>
           </div>
-          <div className="ProductList">
-            <h2>Products</h2>
+          <h2 className={styles.ProductListTitle}>Products</h2>
+          <div className={styles.ProductList}>
             {filteredProducts.length === 0 ? (
                 <p>No products found.</p>
             ) : (
