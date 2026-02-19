@@ -1,0 +1,21 @@
+.main{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    height: 80vh;
+    gap: 20px;
+}
+
+.button {
+    padding: 0.5rem 1rem;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    justify-self: center;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: #767676;
+}
