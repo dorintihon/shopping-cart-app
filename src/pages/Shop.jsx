@@ -5,16 +5,20 @@ function Shop() {
 
     const [products, setProducts] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('All');
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchProducts() {
             try {
+                setLoading(true);
                 const response = await fetch('https://fakestoreapi.com/products');
                 const data = await response.json();
                 // console.log('Fetched products:', data);
                 setProducts(data);
             } catch (error) {
                 console.error('Error fetching products:', error);
+            } finally {
+                setLoading(false);
             }
         }
 
@@ -33,23 +37,27 @@ function Shop() {
   return (
     <>
       <h1>Shop</h1>
-      <div className="Category">
-        <button onClick={() => setSelectedCategory('All')}>All</button>
-        <button onClick={() => setSelectedCategory('Electronics')}>Electronics</button>
-        <button onClick={() => setSelectedCategory('Jewelery')}>Jewelery</button>
-        <button onClick={() => setSelectedCategory("Men's Clothing")}>Men's Clothing</button>
-        <button onClick={() => setSelectedCategory("Women's Clothing")}>Women's Clothing</button>
-      </div>
-      <div className="ProductList">
-        <h2>Products</h2>
-        {filteredProducts.length === 0 ? (
-            <p>No products found.</p>
-        ) : (
-            filteredProducts.map(product => (
-                <ProductCard key={product.id} product={product} />
-            ))
-        )}
-      </div>
+      {loading ? <p>Loading products...</p> : (
+        <div>
+          <div className="Category">
+            <button onClick={() => setSelectedCategory('All')}>All</button>
+            <button onClick={() => setSelectedCategory('Electronics')}>Electronics</button>
+            <button onClick={() => setSelectedCategory('Jewelery')}>Jewelery</button>
+            <button onClick={() => setSelectedCategory("Men's Clothing")}>Men's Clothing</button>
+            <button onClick={() => setSelectedCategory("Women's Clothing")}>Women's Clothing</button>
+          </div>
+          <div className="ProductList">
+            <h2>Products</h2>
+            {filteredProducts.length === 0 ? (
+                <p>No products found.</p>
+            ) : (
+                filteredProducts.map(product => (
+                    <ProductCard key={product.id} product={product} />
+                ))
+            )}
+          </div>
+        </div>
+      )}
     </>
   )
 }
